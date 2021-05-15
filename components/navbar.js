@@ -1,13 +1,11 @@
 /** @format */
 import Link from "next/link";
 import Image from "next/image";
+import { FaHome, FaUserCircle, FaPlusCircle, FaUsers } from "react-icons/fa";
+import { useRouter } from "next/router";
 
 export default function Navbar() {
-  const menuIcon = (path, alt) => {
-    return (
-      <Image className='_icon' src={path} width={20} height={20} alt={alt} />
-    );
-  };
+  const currentLink = useRouter();
   const loggedUserAvatar = (path, alt) => {
     return (
       <div className='logged_user_avatar'>
@@ -34,31 +32,48 @@ export default function Navbar() {
       <ul className='nav_vertical'>
         <li className='nav_link'>
           <Link href='/'>
-            <a>
-              {menuIcon("/icons/home.svg", "home-icon")}
+            <a className={currentLink.pathname == "/" ? "active" : null}>
+              <span className='_icons_min'>
+                <FaHome />
+              </span>
               <span>Home</span>
             </a>
           </Link>
         </li>
         <li className='nav_link'>
           <Link href='/profile'>
-            <a>
-              {menuIcon("/icons/profile.svg", "profile-icon")}{" "}
+            <a className={currentLink.pathname == "/profile" ? "active" : null}>
+              <span className='_icons_min'>
+                <FaUserCircle />
+              </span>
               <span>Profile</span>
             </a>
           </Link>
         </li>
         <li className='nav_link'>
           <Link href='/ad/create'>
-            <a>
-              {menuIcon("/icons/post.svg", "post-icon")} <span>Post Ad</span>
+            <a
+              className={currentLink.pathname == "/ad/create" ? "active" : null}
+            >
+              <span className='_icons_min'>
+                <FaPlusCircle />
+              </span>
+              <span>Post Ad</span>
             </a>
           </Link>
         </li>
         <li className='nav_link'>
           <Link href='/creator/all-creators'>
-            <a>
-              {menuIcon("/icons/creators.svg", "creator-icon")}
+            <a
+              className={
+                currentLink.pathname == "/creator/all-creators"
+                  ? "active"
+                  : null
+              }
+            >
+              <span className='_icons_min'>
+                <FaUsers />
+              </span>
               <span>Creator</span>
             </a>
           </Link>

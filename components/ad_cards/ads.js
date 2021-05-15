@@ -2,6 +2,8 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { FaRegHeart, FaHeart, FaComment, FaShare } from "react-icons/fa";
+import { useRouter } from "next/router";
 
 export default function Ads({
   currentId,
@@ -13,8 +15,19 @@ export default function Ads({
   date,
 }) {
   const [userLike, setUserLike] = useState(false);
-  const changeContrast = {
-    opacity: "0.8",
+  const router = useRouter();
+  const userProfileLink = (currentId, userName) => {
+    return (
+      <span
+        className='_profile_link'
+        onClick={(e) => {
+          e.preventDefault();
+          router.push(`/user/${currentId}`);
+        }}
+      >
+        {userName}
+      </span>
+    );
   };
 
   return (
@@ -35,28 +48,25 @@ export default function Ads({
             <div className='_likes'>
               <div className='_btn_collection'>
                 <button
-                  onClick={() => {
+                  onClick={(e) => {
+                    e.preventDefault();
                     setUserLike(!userLike);
                   }}
                   className='btn btn-like'
-                  style={!userLike ? null : changeContrast}
                 >
-                  <Image
-                    src={!userLike ? "/icons/like.png" : "/icons/liked.png"}
-                    width={20}
-                    height={20}
-                    alt={"like"}
-                  />
+                  {userLike ? <FaHeart className='_like' /> : <FaRegHeart />}
                 </button>
-                <button className='btn btn-like'>Query</button>
-                <button className='btn btn-like'>Share</button>
+                <button className='btn btn-like'>
+                  <FaComment />
+                </button>
+                <button className='btn btn-like'>
+                  <FaShare />
+                </button>
               </div>
               <div className='_counter'>{likes} likes</div>
             </div>
             <div className='_desc'>
-              <Link href={`/user/${currentId}`}>
-                <a>{userName}</a>
-              </Link>
+              {userProfileLink(currentId, userName)}
               {caption}
             </div>
             <div className='_date'>{date}</div>

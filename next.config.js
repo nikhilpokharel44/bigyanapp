@@ -2,6 +2,6 @@
 
 module.exports = {
   images: {
-    domains: ["upload.wikimedia.org", "localhost:3000"],
+    domains: ["upload.wikimedia.org"],
   },
 };

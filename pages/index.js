@@ -6,7 +6,9 @@ import Ads from "../components/ad_cards/ads";
 export default function Home() {
   return (
     <div className='_home_contents'>
-      <h4 className='py-2'>Home</h4>
+      <div className='_page_header'>
+        <h4>Home</h4>
+      </div>
       <Ads
         currentId={1}
         userName={"nikhilPokharel"}

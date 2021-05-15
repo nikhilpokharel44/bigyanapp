@@ -1,0 +1,40 @@
+/** @format */
+
+._post_ad {
+  .form-group {
+    margin: 1rem 0rem;
+    ._form_label {
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+    .form-control {
+      background: none;
+      border: 0;
+      border: 1px solid lighten($DarkMode, 15%);
+      color: $White;
+      &::placeholder {
+        color: darken($White, 40%);
+      }
+    }
+    &.btn_collection {
+      display: flex;
+      padding: 1rem 0rem;
+      .btn {
+        color: $White;
+        border: 1px solid lighten($DarkMode, 15%);
+        background: lighten($DarkMode, 15%);
+        font-weight: 800;
+        display: flex;
+        padding: 10px 15px;
+        &:hover {
+          box-shadow: 0px 4px 4px $Black;
+        }
+        &:first-child {
+          background: none;
+          font-weight: inherit;
+          margin-right: 1rem;
+        }
+      }
+    }
+  }
+}
