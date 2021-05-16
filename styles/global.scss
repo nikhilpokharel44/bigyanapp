@@ -46,7 +46,6 @@ body {
   top: 0;
   left: 0;
   height: 100vh;
-  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -103,6 +102,11 @@ body {
             font-size: 1.6rem;
             margin-top: 0;
             margin-left: 0;
+            @media (max-width: 770px) {
+              font-size: 1.6rem;
+              width: 20px;
+              height: 35px;
+            }
           }
           @media (max-width: 770px) {
             display: none;
@@ -148,11 +152,9 @@ body {
 }
 //sidebar / searchbar
 ._sidebar {
-  flex: 1;
   padding: 1rem 0rem;
   @media (max-width: 1000px) {
     display: none;
-    flex: 0;
     margin: 0;
     padding: 0;
   }
@@ -183,7 +185,6 @@ body {
 //whole-page-wrapper
 .app_container {
   display: flex;
-  justify-content: space-between;
   @media (max-width: 770px) {
     padding: 0;
     margin: 0;
@@ -191,9 +192,8 @@ body {
   ._main_page_contents {
     @media (max-width: 770px) {
       margin: 0;
-      flex: 5;
     }
-    width: 50%;
+    flex: 5;
     white-space: pre-wrap;
     white-space: -moz-pre-wrap;
     white-space: -pre-wrap;
@@ -202,8 +202,10 @@ body {
     border: 1px solid lighten($DarkMode, 15%);
     border-top: 0;
     border-bottom: 0;
-    flex: 3;
     padding: 1rem;
+    &._user_current_profile {
+      padding: 0;
+    }
     margin: 0rem 1rem;
   }
 }
@@ -222,10 +224,8 @@ body {
     width: 100%;
     height: 520px;
     @media (max-width: 990px) {
-      height: 350px;
-    }
-    @media (max-width: 500px) {
-      height: 200px;
+      height: auto;
+      height: 400px;
     }
     background-color: lighten($DarkMode, 10%);
     opacity: 0.9;
@@ -294,5 +294,124 @@ body {
   100% {
     margin-top: 0;
     transform: scale(1);
+  }
+}
+
+//user_profile_introduction
+._profile {
+  ._profile_intro {
+    width: 100%;
+    z-index: 1000;
+    padding: 5rem 0rem 1rem 1rem;
+    display: flex;
+    background: lighten($DarkMode, 8%);
+    &._scrolled {
+      position: sticky;
+      top: 0;
+      transition: all 0.4s linear;
+      padding-top: 1rem;
+      padding-bottom: 0;
+      ._avatar {
+        ._profile_user_image {
+          width: 40px !important;
+          height: 40px !important;
+        }
+        ._user_intro {
+          p {
+            font-size: 14px;
+            &:nth-child(2) {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+    ._avatar {
+      width: 100%;
+      display: flex;
+      align-items: flex-end;
+      ._profile_user_image {
+        border: 4px solid lighten($DarkMode, 40%);
+        @media (max-width: 770px) {
+          width: 80px !important;
+          height: 80px !important;
+        }
+      }
+      ._user_intro {
+        line-height: 0.4;
+        margin-left: 8px;
+        p {
+          ._secondary {
+            font-weight: 800;
+          }
+          &:nth-child(2) {
+            font-size: 13px;
+            color: lighten($DarkMode, 60%);
+          }
+        }
+      }
+    }
+  }
+  ._profile_brief {
+    padding: 1rem;
+  }
+}
+
+//all-creators-page
+._creators {
+  ._creator {
+    margin: 1rem 0rem;
+    &:last-child {
+      margin-bottom: 0;
+    }
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid lighten($DarkMode, 10%);
+    border-radius: 20px;
+    padding: 1rem;
+    @media (max-width: 570px) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    ._creator_brief {
+      display: flex;
+      align-items: center;
+      ._creator_avatar {
+        display: flex;
+      }
+      ._creator_desc {
+        margin-left: 10px;
+        p {
+          margin: 0;
+          padding: 0;
+          @media (max-width: 950px) {
+            font-size: 14px !important;
+          }
+          &:nth-child(2) {
+            font-size: 14px;
+            color: lighten($DarkMode, 50%);
+          }
+        }
+      }
+    }
+    ._follow_btn {
+      @media (max-width: 570px) {
+        display: flex;
+        margin-left: auto;
+      }
+      .btn_follow {
+        border: 0;
+        background: none;
+        background: lighten($DarkMode, 20%);
+        padding: 10px 15px;
+        color: $White;
+        &:hover {
+          box-shadow: 0px 0px 4px $Black;
+          opacity: 0.8;
+        }
+      }
+    }
   }
 }

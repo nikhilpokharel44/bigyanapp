@@ -63,7 +63,7 @@ export default function Navbar() {
           </Link>
         </li>
         <li className='nav_link'>
-          <Link href='/creator/all-creators'>
+          <Link href='/creators'>
             <a
               className={
                 currentLink.pathname == "/creator/all-creators"
