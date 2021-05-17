@@ -53,6 +53,42 @@ export default function profile() {
 
       {/* current-profile-description */}
       <div className='_profile_brief'>
+        <div className='_allowed_details'>
+          <div className='row'>
+            <div className='col-lg-6 _user_desc'>
+              <p>Reward Distributed</p>
+              <div>10</div>
+            </div>
+            <div className='col-lg-6 _user_desc'>
+              <p>Reward Earned</p>
+              <div>20</div>
+            </div>
+          </div>
+        </div>
+        <div className='_allowed_details'>
+          <div className='row'>
+            <div className='col-lg-6 _user_desc'>
+              <p>Amount earned</p>
+              <div>Nrs 2000</div>
+            </div>
+            <div className='col-lg-6 _user_desc'>
+              <p>Amout Withdrawn</p>
+              <div>Nrs 20</div>
+            </div>
+          </div>
+        </div>
+        <div className='_allowed_details'>
+          <div className='row'>
+            <div className='col-lg-6 _user_desc'>
+              <p>Following</p>
+              <div>20</div>
+            </div>
+            <div className='col-lg-6 _user_desc'>
+              <p>Follower</p>
+              <div>20K</div>
+            </div>
+          </div>
+        </div>
         <div className='profile_ads'>
           <Ads
             currentId={1}

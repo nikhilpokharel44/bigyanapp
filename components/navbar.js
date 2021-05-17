@@ -1,13 +1,20 @@
 /** @format */
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { FaHome, FaUserCircle, FaPlusCircle, FaUsers } from "react-icons/fa";
+import {
+  FaHome,
+  FaUserCircle,
+  FaPlusCircle,
+  FaUsers,
+  FaSearch,
+  FaCashRegister,
+} from "react-icons/fa";
 import { useRouter } from "next/router";
 
-export default function Navbar() {
-  const currentLink = useRouter();
-  const loggedUserAvatar = (path, alt) => {
-    return (
+export function Avatar({ path, alt }) {
+  return (
+    <Link href='/profile'>
       <div className='logged_user_avatar'>
         <a className='_user d-flex align-items-center p-2'>
           <div className='_avatar'>
@@ -25,8 +32,11 @@ export default function Navbar() {
           </div>
         </a>
       </div>
-    );
-  };
+    </Link>
+  );
+}
+export default function Navbar() {
+  const currentLink = useRouter();
   return (
     <header className='main_navigation'>
       <ul className='nav_vertical'>
@@ -65,11 +75,7 @@ export default function Navbar() {
         <li className='nav_link'>
           <Link href='/creators'>
             <a
-              className={
-                currentLink.pathname == "/creator/all-creators"
-                  ? "active"
-                  : null
-              }
+              className={currentLink.pathname == "/creators" ? "active" : null}
             >
               <span className='_icons_min'>
                 <FaUsers />
@@ -78,13 +84,40 @@ export default function Navbar() {
             </a>
           </Link>
         </li>
+        <li className='nav_link'>
+          <Link href='/creators'>
+            <a
+              className={
+                currentLink.pathname == "/withdraw/amount" ? "active" : null
+              }
+            >
+              <span className='_icons_min'>
+                <FaCashRegister />
+              </span>
+              <span>Withdraw</span>
+            </a>
+          </Link>
+        </li>
+        <li className='nav_link'>
+          <button
+            onClick={() => {
+              const sideBar =
+                typeof document !== "undefined" &&
+                document.querySelector("._sidebar");
+              sideBar && sideBar.classList.toggle("showMenu");
+            }}
+            className='_btn_temp btn btn-default'
+          >
+            <span className='_icons_min'>
+              <FaSearch />
+            </span>
+          </button>
+        </li>
       </ul>
-      <Link href='/profile'>
-        {loggedUserAvatar(
-          "https://upload.wikimedia.org/wikipedia/en/thumb/8/8b/Avatar_2_logo.jpg/220px-Avatar_2_logo.jpg",
-          "user-avatar-logo"
-        )}
-      </Link>
+      <Avatar
+        path='https://upload.wikimedia.org/wikipedia/en/thumb/8/8b/Avatar_2_logo.jpg/220px-Avatar_2_logo.jpg'
+        alt='user-avatar-logo'
+      />
     </header>
   );
 }

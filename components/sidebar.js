@@ -12,7 +12,7 @@ export default function Sidebar() {
             type='text'
             placeholder='Search'
           />
-          <button className='search_btn' type='submit'>
+          <button className={`search_btn`} type='submit'>
             <Image
               src='/icons/search.svg'
               alt='search icon'
