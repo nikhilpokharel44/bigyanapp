@@ -2,7 +2,16 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { FaRegHeart, FaHeart, FaComment, FaShare } from "react-icons/fa";
+import {
+  FaRegHeart,
+  FaHeart,
+  FaComment,
+  FaShare,
+  FaEllipsisV,
+  FaTrash as DeleteIcon,
+  FaEdit as EditIcon,
+  FaRegAngry as NotInterested,
+} from "react-icons/fa";
 import { useRouter } from "next/router";
 
 export default function Ads({
@@ -15,6 +24,7 @@ export default function Ads({
   date,
 }) {
   const [userLike, setUserLike] = useState(false);
+  const [toggleFeed, setToggleFeed] = useState(false);
   const router = useRouter();
   const userProfileLink = (currentId, userName) => {
     return (
@@ -43,6 +53,37 @@ export default function Ads({
               objectFit={"cover"}
               alt={caption}
             />
+            <div className='_btn_scope'>
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  setToggleFeed((prev) => !prev);
+                }}
+                className='btn btn_filter'
+              >
+                <FaEllipsisV />
+              </button>
+              <div className={`_dot_menu ${toggleFeed ? "_active" : ""}`}>
+                <button className='btn btn-default'>
+                  <p>
+                    <NotInterested className='_dot_icon' />
+                  </p>
+                  <p>Not interested</p>
+                </button>
+                <button className='btn btn-default'>
+                  <p>
+                    <DeleteIcon className='_dot_icon' />
+                  </p>{" "}
+                  <p>Remove this video</p>
+                </button>
+                <button className='btn btn-default'>
+                  <p>
+                    <EditIcon className='_dot_icon' />
+                  </p>{" "}
+                  <p>Update this video</p>
+                </button>
+              </div>
+            </div>
           </div>
           <div className='card-description'>
             <div className='_likes'>

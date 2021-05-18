@@ -272,6 +272,7 @@ body {
 
 //ads-styles
 .card {
+  position: relative;
   background: $DarkMode;
   border: 1px solid lighten($DarkMode, 10%) !important;
   border-radius: 0;
@@ -288,7 +289,64 @@ body {
       height: 400px;
     }
     background-color: lighten($DarkMode, 10%);
-    opacity: 0.9;
+    opacity: 1;
+    ._btn_scope {
+      .btn_filter {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        background: $DarkMode;
+        padding: 6px 10px;
+        border-radius: 0;
+        color: $White;
+        font-size: 15px;
+        box-shadow: -4px 0px 8px $Black;
+        &:hover {
+          opacity: 0.8;
+        }
+        * > & {
+          font-weight: 100 !important;
+        }
+      }
+      ._dot_menu {
+        display: none !important;
+        &._active {
+          display: inherit !important;
+          animation: feedMenuAnimation 0.4s linear;
+        }
+        position: absolute;
+        bottom: 0;
+        right: 20px;
+        transform: translate(-0%, 100%);
+        background: lighten($DarkMode, 10%);
+        box-shadow: 4px 4px 6px $Black;
+        display: flex;
+        flex-direction: column;
+        .btn {
+          display: block;
+          width: 100%;
+          padding: 10px 1.4rem;
+          text-align: left;
+          color: $White;
+          display: flex;
+          align-items: center;
+          p {
+            margin: 0;
+          }
+          ._dot_icon {
+            font-size: 1.1rem;
+            margin-right: 10px;
+          }
+          &:hover {
+            background: lighten($DarkMode, 5%);
+          }
+          font-size: 14px;
+          &:last-child {
+            border-bottom: 0;
+          }
+        }
+      }
+    }
   }
   .card-description {
     font-size: 14px;
@@ -517,5 +575,14 @@ body {
     ._detail {
       display: none !important;
     }
+  }
+}
+
+@keyframes feedMenuAnimation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
