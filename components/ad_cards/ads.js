@@ -3,8 +3,6 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
-  FaRegHeart,
-  FaHeart,
   FaComment,
   FaShare,
   FaEllipsisV,
@@ -13,6 +11,8 @@ import {
   FaRegAngry as NotInterested,
 } from "react-icons/fa";
 import { useRouter } from "next/router";
+
+import Likebtn from "../btnLike";
 
 export default function Ads({
   currentId,
@@ -23,7 +23,6 @@ export default function Ads({
   likedBy = "",
   date,
 }) {
-  const [userLike, setUserLike] = useState(false);
   const [toggleFeed, setToggleFeed] = useState(false);
   const router = useRouter();
   const userProfileLink = (currentId, userName) => {
@@ -88,15 +87,7 @@ export default function Ads({
           <div className='card-description'>
             <div className='_likes'>
               <div className='_btn_collection'>
-                <button
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setUserLike(!userLike);
-                  }}
-                  className='btn btn-like'
-                >
-                  {userLike ? <FaHeart className='_like' /> : <FaRegHeart />}
-                </button>
+                <Likebtn isLiked={false} />
                 <button className='btn btn-like'>
                   <FaComment />
                 </button>

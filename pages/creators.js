@@ -41,7 +41,7 @@ export default function Creators() {
   return (
     <div className='_creators'>
       <div className='_page_header'>
-        <h4>Creator's you may know</h4>
+        <h4>Follow Creator</h4>
       </div>
       {creator("nikhil")}
       {creator("one2")}
