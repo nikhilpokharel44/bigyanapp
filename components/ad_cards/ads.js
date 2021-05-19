@@ -25,7 +25,7 @@ export default function Ads({
   const [toggleFeed, setToggleFeed] = useState(false);
   const userProfileLink = (currentId, userName) => {
     return (
-      <Link href={`/user/${currentId}`}>
+      <Link href={`/profile?userId=${currentId}`}>
         <a className='_profile_link'>{userName}</a>
       </Link>
     );

@@ -6,7 +6,6 @@ import Ads from "../components/ad_cards/ads";
 
 export default function profile() {
   const [miniatureProfile, setMiniatureProfile] = useState(false);
-
   useEffect(() => {
     if (typeof window !== "undefined") {
       window.addEventListener("scroll", () => {
