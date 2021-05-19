@@ -110,33 +110,79 @@ body {
     border-top: 1px solid lighten($DarkMode, 40%);
     z-index: 100000000000;
   }
+  ._navigator {
+    position: absolute;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    background: $DarkMode;
+    padding: 0;
+    z-index: 10;
+    ._icons_min {
+      font-size: 12px;
+      padding: 0px auto;
+    }
+    &._navigator_top {
+      @media screen and (max-width: 500px) {
+        width: auto;
+        top: 0;
+        left: 0;
+        height: 100%;
+        transform: rotate(-90deg);
+      }
+      top: 0;
+    }
+    &._navigator_bottom {
+      bottom: 0;
+      @media screen and (max-width: 500px) {
+        width: auto;
+        top: 0;
+        right: 0;
+        height: 100%;
+        transform: rotate(-90deg);
+      }
+    }
+    ._icons_min {
+      background: none;
+      display: block;
+      color: $White;
+      padding: 10px 14px;
+      font-weight: 900;
+      box-shadow: 0;
+      border: 0;
+      &:hover {
+        color: lighten($DarkMode, 50%);
+      }
+    }
+  }
   .nav_vertical {
+    margin-top: 2rem;
+    position: relative;
     display: flex;
     flex-direction: column;
     list-style: none;
     margin-left: 0;
     padding-left: 0;
+    margin-right: 0;
+    padding-right: 0;
+    height: 60vh;
+    overflow: hidden;
     overflow-y: scroll;
-    @media screen and (max-width: 500px) {
-      width: 92%;
-      margin: auto;
-      flex-direction: row !important;
-      margin-bottom: 0 !important;
-      overflow-y: hidden;
-      overflow-x: scroll;
-    }
+    scrollbar-width: none;
+    scrollbar-track-color: transparent;
+    transition: all 0.2s ease;
+    /* width */
     &::-webkit-scrollbar {
       width: 0px;
-      height: 0px;
     }
-    &::-webkit-scrollbar-track {
-      background: #f1f1f1;
-      width: 0;
-    }
-    &::-webkit-scrollbar-thumb {
-      background: #888;
-      width: 0;
-      height: 0;
+    @media screen and (max-width: 500px) {
+      width: 80%;
+      margin: auto;
+      flex-direction: row !important;
+      overflow-y: hidden;
+      overflow-x: scroll;
+      margin-bottom: 0 !important;
     }
     .nav_link {
       margin: 1.5rem 0rem;
@@ -205,6 +251,8 @@ body {
   }
   .logged_user_avatar {
     @include loggedUserAvatar();
+    margin-bottom: 3rem;
+    padding-top: 0;
     @media (max-width: 500px) {
       display: none;
     }
@@ -280,11 +328,11 @@ body {
     border: 1px solid lighten($DarkMode, 15%);
     border-top: 0;
     border-bottom: 0;
-    padding: 1rem;
+    padding: 8px;
     &._user_current_profile {
       padding: 0;
     }
-    margin: 0rem 1rem;
+    margin: 0rem 10px;
     @media (max-width: 500px) {
       margin: 0rem !important;
     }
@@ -476,7 +524,7 @@ body {
     }
   }
   ._profile_brief {
-    padding: 1rem;
+    padding: 10px;
   }
 }
 

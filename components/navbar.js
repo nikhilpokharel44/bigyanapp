@@ -9,6 +9,8 @@ import {
   FaUsers,
   FaSearch,
   FaCashRegister,
+  FaChevronDown,
+  FaChevronUp,
 } from "react-icons/fa";
 import { useRouter } from "next/router";
 
@@ -37,8 +39,25 @@ export function Avatar({ path, alt }) {
 }
 export default function Navbar() {
   const currentLink = useRouter();
+  const [scrollCounter] = useState(16);
   return (
     <header className='main_navigation'>
+      <div className='nav_link _navigator _navigator_top'>
+        <button
+          onClick={() => {
+            let navbarMain = document.querySelector(".nav_vertical");
+            let checkWidth = typeof window !== "undefined" && window.innerWidth;
+            if (checkWidth <= 500) {
+              navbarMain.scrollBy(-scrollCounter, 0);
+            } else {
+              navbarMain.scrollBy(0, -scrollCounter);
+            }
+          }}
+          className='_icons_min'
+        >
+          <FaChevronUp />
+        </button>
+      </div>
       <ul className='nav_vertical'>
         <li className='nav_link'>
           <Link href='/'>
@@ -85,10 +104,10 @@ export default function Navbar() {
           </Link>
         </li>
         <li className='nav_link'>
-          <Link href='/creators'>
+          <Link href='/withdraw/amt'>
             <a
               className={
-                currentLink.pathname == "/withdraw/amount" ? "active" : null
+                currentLink.pathname == "/withdraw/amt" ? "active" : null
               }
             >
               <span className='_icons_min'>
@@ -114,6 +133,22 @@ export default function Navbar() {
           </button>
         </li>
       </ul>
+      <div className='nav_link _navigator _navigator_bottom'>
+        <button
+          onClick={(e) => {
+            let navbarMain = document.querySelector(".nav_vertical");
+            let checkWidth = typeof window !== "undefined" && window.innerWidth;
+            if (checkWidth <= 500) {
+              navbarMain.scrollBy(scrollCounter, 0);
+            } else {
+              navbarMain.scrollBy(0, scrollCounter);
+            }
+          }}
+          className='_icons_min'
+        >
+          <FaChevronDown />
+        </button>
+      </div>
       <Avatar
         path='https://upload.wikimedia.org/wikipedia/en/thumb/8/8b/Avatar_2_logo.jpg/220px-Avatar_2_logo.jpg'
         alt='user-avatar-logo'
