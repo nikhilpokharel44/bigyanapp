@@ -53,6 +53,7 @@ export default function Ads({
             >
               <FaEllipsisV />
             </button>
+
             <div className={`_dot_menu ${toggleFeed ? "_active" : ""}`}>
               <button className='btn btn-default'>
                 <p>
@@ -76,7 +77,12 @@ export default function Ads({
           </div>
         </a>
       </Link>
-      <div className='card-description'>
+      <div
+        className='card-description'
+        onClick={() => {
+          setToggleFeed(false);
+        }}
+      >
         <div className='_likes'>
           <div className='_btn_collection'>
             <Likebtn isLiked={false} />

@@ -16,8 +16,8 @@ import { useRouter } from "next/router";
 
 export function Avatar({ path, alt }) {
   return (
-    <Link href='/profile'>
-      <div className='logged_user_avatar'>
+    <div className='logged_user_avatar'>
+      <Link href='/profile'>
         <a className='_user d-flex align-items-center p-2'>
           <div className='_avatar'>
             <Image
@@ -33,8 +33,8 @@ export function Avatar({ path, alt }) {
             <span>nikhilpokharel9815</span>
           </div>
         </a>
-      </div>
-    </Link>
+      </Link>
+    </div>
   );
 }
 export default function Navbar() {

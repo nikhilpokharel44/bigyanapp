@@ -58,8 +58,8 @@ export default function View() {
                     "https://upload.wikimedia.org/wikipedia/en/thumb/8/8b/Avatar_2_logo.jpg/220px-Avatar_2_logo.jpg"
                   }
                   alt={"user-avatar"}
-                  width={40}
-                  height={40}
+                  width={50}
+                  height={50}
                 />
               </div>
               <div className='_detail d-flex flex-column'>

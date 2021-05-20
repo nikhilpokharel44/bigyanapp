@@ -10,7 +10,7 @@
     .form-control {
       background: none;
       border: 0;
-      border: 1px solid lighten($DarkMode, 15%);
+      border: 1px solid lighten($Black, 20%);
       color: $White;
       &::placeholder {
         color: darken($White, 40%);
@@ -21,8 +21,8 @@
       padding: 1rem 0rem;
       .btn {
         color: $White;
-        border: 1px solid lighten($DarkMode, 15%);
-        background: lighten($DarkMode, 15%);
+        border: 1px solid $ThemeColor;
+        background: $ThemeColor;
         font-weight: 800;
         display: flex;
         padding: 10px 15px;
